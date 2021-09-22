@@ -11,19 +11,22 @@
  * 
  * JS Standard: ESlint
  * 
-*/
+ */
 
 /**
  * Define Global Variables
  * 
-*/
+ */
 
+const allSections = document.querySelectorAll('section');
+const allSectionsHeaders = document.querySelectorAll('h2');
+const uList = document.querySelector('#navbar__list');
 
 /**
  * End Global Variables
  * Start Helper Functions
  * 
-*/
+ */
 
 
 
@@ -34,6 +37,19 @@
 */
 
 // build the nav
+const buildNavBar = () => {
+
+    const fragment = document.createDocumentFragment();
+
+    for (let section = 0; section < allSections.length; section++) {
+        const listItem = document.createElement('a');
+        listItem.innerHTML = `<li class="menu__link">${allSectionsHeaders[section].textContent}</li>`;
+        listItem.setAttribute('href', `#${allSections[section].getAttribute('id')}`);
+        fragment.appendChild(listItem);
+    }
+
+    uList.appendChild(fragment);
+}
 
 
 // Add class 'active' to section when near top of viewport
@@ -49,9 +65,7 @@
 */
 
 // Build menu 
-
+buildNavBar();
 // Scroll to section on link click
 
 // Set sections as active
-
-
