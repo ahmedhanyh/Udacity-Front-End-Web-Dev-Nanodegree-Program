@@ -24,14 +24,6 @@ const uList = document.querySelector('#navbar__list');
 
 /**
  * End Global Variables
- * Start Helper Functions
- * 
- */
-
-
-
-/**
- * End Helper Functions
  * Begin Main Functions
  * 
 */
@@ -47,13 +39,18 @@ const buildNavBar = () => {
         listItem.setAttribute('href', `#${allSections[section].getAttribute('id')}`);
         fragment.appendChild(listItem);
     }
-
+    
     uList.appendChild(fragment);
 }
 
-
 // Add class 'active' to section when near top of viewport
-
+const focus = () => {
+    for (let section = 0; section < allSections.length; section++) {
+        if (window.innerHeight - allSections[section].getBoundingClientRect().top >= (window.innerHeight - 600) && window.innerHeight - allSections[section].getBoundingClientRect().bottom < (window.innerHeight - 600)) {
+            allSections[section].classList.add('your-active-class');
+        } else allSections[section].classList.remove('your-active-class');
+    }
+}
 
 // Scroll to anchor ID
 const scrollToSection = (event) => {
@@ -75,6 +72,6 @@ buildNavBar();
 // Scroll to section on link click
 uList.addEventListener('click',  scrollToSection);
 // Set sections as active
-
+window.addEventListener('scroll', focus);
 
 
