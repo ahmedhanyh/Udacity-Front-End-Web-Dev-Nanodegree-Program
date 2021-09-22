@@ -55,8 +55,14 @@ const buildNavBar = () => {
 // Add class 'active' to section when near top of viewport
 
 
-// Scroll to anchor ID using scrollTO event
-
+// Scroll to anchor ID
+const scrollToSection = (event) => {
+    event.preventDefault();
+    if (event.target.classList.contains('menu__link') === true) {
+        const eScroll = document.querySelector(event.target.parentElement.getAttribute('href'));
+        eScroll.scrollIntoView({behavior: 'smooth'});
+    }
+}
 
 /**
  * End Main Functions
@@ -67,5 +73,8 @@ const buildNavBar = () => {
 // Build menu 
 buildNavBar();
 // Scroll to section on link click
-
+uList.addEventListener('click',  scrollToSection);
 // Set sections as active
+
+
+
