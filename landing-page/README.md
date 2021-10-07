@@ -1,4 +1,4 @@
-#Making a webpage interactive with JavaScript
+# Making a webpage interactive with JavaScript
 
 This Landing Page project was a static webpage made with HTML & CSS.
 I used JavaScript to add some interactivity to it.
